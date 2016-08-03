@@ -1,0 +1,1 @@
+attributes :id, :installation_key, :app_identifier, :app_name, :app_version, :device_type, :created_at, :device_token, :time_zone

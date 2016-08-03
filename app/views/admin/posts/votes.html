@@ -1,0 +1,113 @@
+<style>
+	img {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.crop {
+	    max-width: 80px;
+	    max-height: 80px;
+	    overflow: hidden;
+	}
+	table {
+		max-width: 70%;
+	    margin-left: 5%;
+	}
+	tr {
+		border: 1px solid #000;
+	}
+	th {
+		background-color: #808080;
+	}
+	td {
+		padding: 5px;
+		text-align: center;
+	}
+	td.email {
+		color: #00f;
+	}
+	tr.odd {
+		background-color: #f2f2f2;
+	}
+	tr.even {
+		background-color: #bfbfbf;
+	}
+	tr.warn1 {
+		background-color: #ffd8d8;
+	}
+	td.warn1 {
+		background-color: #ffd8d8;
+		width: 20px;
+		height: 20px;
+	}
+	tr.warn2{
+		background-color: #ff6666;
+	}
+	td.warn2 {
+		background-color: #ff6666;
+		width: 20px;
+		height: 20px;
+	}
+	div.submit {
+		float: right;
+		width: 30%;
+	}
+	input.submitButton {
+		padding: 12px;
+		border-radius: 8px;
+		background-color: #573e82;
+		color: #fff;
+		font-size: 18px;
+		border-width: 0px;
+	}
+</style>
+<form name="posts" method="POST">
+	<div class="submit">
+		<input class="submitButton" type="submit" id="submit" value="Save" />
+	</div>
+	<table>
+		<tr>
+			<th></th>
+			<th>#</th>
+			<th>Thumbnail</th>
+			<th>Username</th>
+			<th>Email</th>
+			<th>Account Verified</th>
+			<th>Facebook link</th>
+			<th>Posts Count</th>
+		</tr>
+		<% @data[:vote_actions].each_with_index do |action, index| %>
+			<% class_name = index % 2 == 0 ? "even" : "odd" %>
+			<tr class=<%= class_name %>>
+				<td>
+					<input type="checkbox" name="actions[]" value=<%= action.id.to_s %>>
+				</td>
+				<td>
+					<%= (index + 1).to_s %>
+				</td>
+				<td>
+					<% if action.user.profile_picture %>
+						<a href=<%= action.user.profile_picture.build_url(request) %>>
+							<img class="crop" src=<%= action.user.thumbnail.build_url(request) %>></img>
+						</a>
+					<% end %>
+				</td>
+				<td>
+					<%= action.user.name %>
+				</td>
+				<td>
+					<%= action.user.email.to_s %>
+				</td>
+				<td>
+					<%= action.user.email_verified ? "Yes" : "No" %>
+				</td>
+				<td>
+					<%= action.user.facebook_id ? link_to("Facebook", "http://facebook.com/" + action.user.facebook_id) : "" %>
+				</td>
+				<td>
+					<%= action.user.posts_count.to_s %>
+				</td>
+			</tr>
+
+		<% end %>
+	</table>
+</form>

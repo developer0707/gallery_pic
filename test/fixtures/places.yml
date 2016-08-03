@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  parse_object_id: MyString
+  name: MyString
+  google_place_id: MyString
+  latitude: 1.5
+  longitude: 1.5
+  canonical_name: MyString
+
+two:
+  parse_object_id: MyString
+  name: MyString
+  google_place_id: MyString
+  latitude: 1.5
+  longitude: 1.5
+  canonical_name: MyString

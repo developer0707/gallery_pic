@@ -1,0 +1,113 @@
+<style>
+	img {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.crop {
+	    max-width: 80px;
+	    max-height: 80px;
+	    overflow: hidden;
+	}
+	table {
+		max-width: 70%;
+	    margin-left: 5%;
+	}
+	tr {
+		border: 1px solid #000;
+	}
+	th {
+		background-color: #808080;
+	}
+	td {
+		padding: 5px;
+		text-align: center;
+	}
+	td.email {
+		color: #00f;
+	}
+	tr.odd {
+		background-color: #f2f2f2;
+	}
+	tr.even {
+		background-color: #bfbfbf;
+	}
+	div.submit {
+		float: right;
+		width: 30%;
+	}
+	input.submitButton {
+		padding: 12px;
+		border-radius: 8px;
+		background-color: #573e82;
+		color: #fff;
+		font-size: 18px;
+		border-width: 0px;
+	}
+</style>
+
+<p>
+	<%= "Categories: " %>
+	<%= link_to "All", :controller => :posts, :action =>  :round_posts , :secret_token => params[:secret_token] %>
+	<% @data[:categories].each do |category| %>
+		<%= link_to category.name, :controller => :posts, :action =>  :round_posts , :secret_token => params[:secret_token], :category_id => category.id.to_s %>
+	<% end %>
+</p>
+
+<form name="posts" method="POST">
+	<div class="submit">
+		<input class="submitButton" type="submit" id="submit" value="Save" />
+	</div>
+	<div>
+		<% if @data[:round].winning_posts.count > 0 %>
+			<p>
+				Current winners are:
+				<% @data[:round].winning_posts.each do |winning_post| %>
+					<%= winning_post.post.user.name + ", " %>
+				<% end %>
+			</p>
+		<% end %>
+	</div>
+	<table>
+		<tr>
+			<th></th>
+			<th>#</th>
+			<th>Thumbnail</th>
+			<th>User name</th>
+			<th>Votes</th>
+			<th>Category</th>
+			<th>Email</th>
+			<th>Email Verified</th>
+		</tr>
+		<% @data[:posts].each_with_index do |post, index| %>
+			<% class_name = index % 2 == 0 ? "even" : "odd" %>
+			<tr class=<%= class_name %>>
+				<td>
+					<input type="checkbox" name="posts[]" value=<%= post.id.to_s %> <%= @data[:winning_posts_ids] && @data[:winning_posts_ids].include?(post.id) ? "checked" : "" %>>
+				</td>
+				<td>
+					<%= (index + 1).to_s %>
+				</td>
+				<td>
+					<a href=<%= post.photo.build_url(request) %>>
+						<img class="crop" src=<%= post.thumbnail.build_url(request) %>></img>
+					</a>
+				</td>
+				<td>
+					<%= post.user.name %>
+				</td>
+				<td>
+					<%= link_to post.votes_count.to_s, :controller => :posts, :action =>  :votes , :secret_token => params[:secret_token], :id => params[:id], :post_id => post.id.to_s %>
+				</td>
+				<td>
+					<%= link_to post.category.name, :controller => :posts, :action =>  :round_posts , :secret_token => params[:secret_token], :category_id => post.category_id.to_s %>
+				</td>
+				<td>
+					<%= post.user.email %>
+				</td>
+				<td>
+					<%= post.user.email_verified ? "Yes" : "No" %>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+</form>

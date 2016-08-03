@@ -1,0 +1,2 @@
+module Get::GetHelper
+end

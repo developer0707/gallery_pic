@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  parse_object_id: MyString
+  name: MyString
+  geoname_id: 1
+  state_id: 
+
+two:
+  parse_object_id: MyString
+  name: MyString
+  geoname_id: 1
+  state_id: 

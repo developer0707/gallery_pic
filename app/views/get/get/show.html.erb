@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= favicon_link_tag %>
+  <title>PiccMee</title>
+  <%= csrf_meta_tags %>
+  <% @meta_tags.each do |key, value|%>
+  <meta property="<%= key %>" content="<%= value %>">
+  <% end %>
+  <style>
+	body {
+	    background-color: #573e82;
+	    color: #fff;
+	    text-align: center;
+	}
+	img.logo{
+	    display:block;
+	    margin-left:auto;
+	    margin-right:auto;
+	    margin-top:5%;
+	}
+	div.download {
+	    display:block;
+	    width:226px;
+	    margin-left:auto;
+	    margin-right:auto;
+	    margin-top:2%;
+	}
+	img.download {
+	    display:block;
+	    margin-left:auto;
+	    margin-right:auto;
+	    margin-top:10%;
+	    margin-bottom:5%;
+	}
+	div.redirecting {
+	    margin-top:2%;
+	    display:block;
+	    width:226px;
+	    margin-left:auto;
+	    margin-right:auto;
+	    padding:20px;
+	    border-style: solid;
+	    border-width: 1px;
+	    height:10%;
+		background-color: #BAE0C0;
+		border-radius: 2px;
+		color:#353535;
+	}
+	img.loading {
+		vertical-align: middle;
+	}
+		span.hint {
+	    display:block;
+	    margin-top:5px;
+			font-size: 11px;
+			}
+	</style>
+	<script language="javascript">
+		function openUrl(url){
+			window.open(url);
+		}
+	</script>
+</head>
+<body>
+	<%= image_tag "icon175x175.jpeg", alt: "PiccMee", class: "logo" %>
+	<h1>PiccMee</h1>
+	<% if @uri && @uri.scheme.eql?('piccmee') %>
+		<div class="redirecting">
+	    redirecting...
+	    <%= image_tag "loading.gif", alt: "Loading", class: "loading", align: "right" %>
+		<script language="javascript">setTimeout(function(){ window.location.href = "<%= @uri %>" ; }, 2000);</script>
+	    <br >
+	    <span class="hint">Not working? Download the app from links below. </span>
+		</div>
+	<% end %>
+	<div class="download">
+		<a href=<%= @play_store %>>
+			<img class="download" alt="Get it on Google Play" src="https://developer.android.com/images/brand/en_generic_rgb_wo_45.png" />
+		</a>
+		<a href=<%= @app_store %>>
+			<%= image_tag "app_store.svg", alt: "Available on AppStore", class: "download" %>
+		</a>
+	</div>
+</body>
+</html>

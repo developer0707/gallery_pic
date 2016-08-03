@@ -1,0 +1,13 @@
+<title>New Round</title>
+
+Date and Time below are UTC+0 <br /><br />
+
+<%= form_for(@round, :url => admin_rounds_path({ secret_token: params[:secret_token] })) do |f| %>
+  <%= f.label :start_date %>:
+  <%= f.datetime_local_field :start_date %><br /><br />
+
+  <%= f.label :end_date %>:
+  <%= f.datetime_local_field :end_date %><br /><br />
+
+  <%= f.submit %>
+<% end %>

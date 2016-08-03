@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  parse_object_id: MyString
+  parse_installation_id: MyString
+  app_identifier: MyString
+  app_name: MyString
+  app_version: MyString
+  badge: 1
+  device_token: MyString
+  device_token_last_modified: MyString
+  device_type: MyString
+  installation_key: MyString
+  time_zone: MyString
+  google_ad_id: MyString
+  google_ad_id_limited: false
+  user_id: 1
+
+two:
+  parse_object_id: MyString
+  parse_installation_id: MyString
+  app_identifier: MyString
+  app_name: MyString
+  app_version: MyString
+  badge: 1
+  device_token: MyString
+  device_token_last_modified: MyString
+  device_type: MyString
+  installation_key: MyString
+  time_zone: MyString
+  google_ad_id: MyString
+  google_ad_id_limited: false
+  user_id: 1

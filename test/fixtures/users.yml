@@ -1,0 +1,53 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  parse_object_id: MyString
+  username: MyString
+  password_digest: MyString
+  email: MyString
+  first_name: MyString
+  last_name: MyString
+  gender: MyString
+  address: MyString
+  street_address: MyString
+  profile_picture_id: 
+  thumbnail_id: 
+  facebook_token: MyString
+  facebook_id: MyString
+  facebook_token_expire_date: 2015-11-20 15:13:59
+  email_verified: false
+  birthdate: 2015-11-20 15:13:59
+  followers_count: 1
+  follows_count: 1
+  posts_count: 1
+  reports_count: 1
+  zip_code: MyString
+  verified: false
+  city_id: 
+  name: MyString
+
+two:
+  parse_object_id: MyString
+  username: MyString
+  password_digest: MyString
+  email: MyString
+  first_name: MyString
+  last_name: MyString
+  gender: MyString
+  address: MyString
+  street_address: MyString
+  profile_picture_id: 
+  thumbnail_id: 
+  facebook_token: MyString
+  facebook_id: MyString
+  facebook_token_expire_date: 2015-11-20 15:13:59
+  email_verified: false
+  birthdate: 2015-11-20 15:13:59
+  followers_count: 1
+  follows_count: 1
+  posts_count: 1
+  reports_count: 1
+  zip_code: MyString
+  verified: false
+  city_id: 
+  name: MyString

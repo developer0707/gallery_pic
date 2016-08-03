@@ -1,0 +1,5 @@
+<%= form_tag({action: :upload}, multipart: true) do %>
+   <%= file_field_tag 'xml_file' %>
+   <input type="hidden" name="secret_token" value="65eb2a63e0990015dcc7995de227fbca" />
+   <%= submit_tag 'Submit' %>
+<% end %>

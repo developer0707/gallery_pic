@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  parse_object_id: MyString
+  user_id: 
+  referenced_object_id: 
+  referenced_object_type: MyString
+  referenced_user_id: 
+  mention_start: 1
+  mention_end: 1
+
+two:
+  parse_object_id: MyString
+  user_id: 
+  referenced_object_id: 
+  referenced_object_type: MyString
+  referenced_user_id: 
+  mention_start: 1
+  mention_end: 1
